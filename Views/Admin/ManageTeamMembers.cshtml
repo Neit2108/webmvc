@@ -1,0 +1,413 @@
+﻿@model List<BR_Architects.Models.TeamMember>
+@{
+    ViewData["Title"] = "Quản lý thành viên";
+    Layout = "_AdminLayout";
+}
+
+<div class="team-management">
+    <div class="card">
+        <div class="card-header">
+            <h2>Danh sách thành viên</h2>
+            <a href="#" onclick="openAddMemberModal(); return false;" class="btn-add">
+                <i class="bi bi-plus-lg"></i> Thêm thành viên mới
+            </a>
+        </div>
+
+        <div class="card-body">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            @if (Model.Count == 0)
+            {
+                <div class="no-data">
+                    <i class="bi bi-people"></i>
+                    <p>Chưa có thành viên nào.</p>
+                    <button type="button" class="btn" onclick="openAddMemberModal()">Thêm thành viên đầu tiên</button>
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">ID</th>
+                                <th style="width: 100px;">Hình ảnh</th>
+                                <th>Họ tên</th>
+                                <th>Email</th>
+                                <th>Chức vụ</th>
+                                <th style="width: 150px; text-align: center;">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var member in Model)
+                            {
+                                <tr>
+                                    <td style="text-align: center;">@member.Id</td>
+                                    <td style="text-align: center;">
+                                        <img src="/@member.LinkAnh" alt="@member.User.HoTen"
+                                             style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;">
+                                    </td>
+                                    <td>@member.User.HoTen</td>
+                                    <td>@member.User.Email</td>
+                                    <td>@member.ChucVu</td>
+                                    <td style="text-align: center;">
+                                        <div style="display: inline-block;">
+                                            <a href="#" onclick="editMember(@member.Id); return false;"
+                                               class="button-action edit" style="background-color: #ffc107;">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                            <a href="#" onclick="confirmDeleteMember(@member.Id, '@member.User.HoTen'); return false;"
+                                               class="button-action delete" style="background-color: #dc3545;">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                            <a href="#" onclick="viewMember(@member.Id); return false;"
+                                               class="button-action view" style="background-color: #17a2b8;">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- xem thành viên -->
+<div id="memberViewModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="member-detail">
+            <div class="member-image-container">
+                <img id="member-image" src="" alt="">
+            </div>
+            <h2 id="member-name"></h2>
+            <h3 id="member-position"></h3>
+            <div class="member-info">
+                <p><strong>Email:</strong> <span id="member-email"></span></p>
+            </div>
+            <div class="member-description">
+                <h3>Giới thiệu</h3>
+                <p id="member-bio"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- sửa/xóa -->
+<div id="memberFormModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="memberFormTitle">Thêm thành viên mới</h2>
+        <form id="memberForm" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <input type="hidden" id="memberId" name="Id" value="0">
+            <input type="hidden" id="currentImage" name="LinkAnh" value="">
+            <input type="hidden" id="userId" name="UserId" value="">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="hoTen">Họ tên</label>
+                    <input type="text" id="hoTen" name="User.HoTen" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="User.Email" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="chucVu">Chức vụ <span class="required">*</span></label>
+                    <input type="text" id="chucVu" name="ChucVu" class="form-control" required>
+                    <span class="validation-message"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="imageFile">Hình ảnh <span class="required" id="imageRequired">*</span></label>
+                <div class="image-upload-container">
+                    <input type="file" name="imageFile" id="imageFile" class="image-upload" accept="image/*">
+                    <label for="imageFile" class="image-upload-label">
+                        <i class="bi bi-cloud-upload"></i>
+                        <span>Chọn hình ảnh...</span>
+                    </label>
+                    <div id="preview-container" class="preview-container" style="display: none;">
+                        <img id="preview-image" src="#" alt="Preview">
+                        <button type="button" id="remove-image" class="remove-preview">
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </div>
+                    <small class="form-text text-muted" id="imageHelp" style="display: none;">Để trống nếu bạn không muốn thay đổi hình ảnh.</small>
+                </div>
+                <div class="validation-message"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="gioiThieu">Giới thiệu</label>
+                <textarea id="gioiThieu" name="GioiThieu" class="form-control" rows="4"></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" onclick="closeModal('memberFormModal')">Hủy bỏ</button>
+                <button type="submit" class="btn-submit">Lưu thành viên</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- xóa -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Xác nhận xóa</h2>
+        <p>Bạn có chắc chắn muốn xóa thành viên "<span id="deleteMemberName"></span>"?</p>
+        <div class="form-actions">
+            <button type="button" class="btn-cancel" onclick="closeModal('deleteModal')">Hủy bỏ</button>
+            <button type="button" class="btn-delete" id="btnConfirmDelete">Xác nhận xóa</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .button-action {
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        color: white;
+        text-align: center;
+        line-height: 36px;
+        margin: 0 3px;
+        text-decoration: none;
+    }
+
+        .button-action:hover {
+            opacity: 0.9;
+            color: white;
+        }
+
+        .button-action i {
+            font-size: 16px;
+        }
+
+    .data-table th,
+    .data-table td {
+        vertical-align: middle;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            console.log("Team Member management page loaded");
+
+            $('#imageFile').change(function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#preview-image').attr('src', e.target.result);
+                        $('#preview-container').show();
+                        $('.image-upload-label span').text(file.name);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            $('#remove-image').click(function() {
+                $('#imageFile').val('');
+                $('#preview-container').hide();
+                $('.image-upload-label span').text('Chọn hình ảnh...');
+            });
+
+            $('#memberForm').submit(function(e) {
+                e.preventDefault();
+
+                if (!validateMemberForm()) {
+                    return false;
+                }
+
+                var formData = new FormData(this);
+                for (var pair of formData.entries()) {
+                    console.log(pair[0] + ': ' + pair[1]);
+                }
+                var url = ($("#memberId").val() === "0") ?
+                    '@Url.Action("CreateTeamMember", "Admin")' :
+                    '@Url.Action("EditTeamMember", "Admin")';
+
+                $('.btn-submit').prop('disabled', true).text('Đang xử lý...');
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(result) {
+                        if (result.success) {
+                            window.location.reload();
+                        } else {
+                            alert(result.message || "Đã xảy ra lỗi khi lưu thành viên.");
+                            $('.btn-submit').prop('disabled', false).text('Lưu thành viên');
+                        }
+                    },
+                    error: function() {
+                        alert("Đã xảy ra lỗi khi gửi yêu cầu.");
+                        $('.btn-submit').prop('disabled', false).text('Lưu thành viên');
+                    }
+                });
+            });
+        });
+
+        function openAddMemberModal() {
+            console.log("Opening add member modal");
+
+            $('#memberForm')[0].reset();
+            $('#memberId').val(0);
+            $('#currentImage').val('');
+            $('#memberFormTitle').text('Thêm thành viên mới');
+            $('#imageRequired').show();
+            $('#imageHelp').hide();
+            $('#preview-container').hide();
+            $('.image-upload-label span').text('Chọn hình ảnh...');
+
+            $('.validation-message').text('');
+
+            $('#memberFormModal').css('display', 'block');
+        }
+
+        function editMember(id) {
+            console.log("Edit member: " + id);
+
+            $.ajax({
+                url: '@Url.Action("GetTeamMemberById", "Admin")/' + id,
+                type: 'GET',
+                success: function (member) {
+                    $('#memberId').val(member.id);
+                    $('#hoTen').val(member.user.hoTen);
+					$('#userId').val(member.user.id);
+                    $('#email').val(member.user.email);
+                    $('#chucVu').val(member.chucVu);
+                    $('#gioiThieu').val(member.gioiThieu);
+                    $('#currentImage').val(member.linkAnh);
+
+                    // Hiển thị ảnh preview nếu có
+                    if (member.linkAnh) {
+                        $('#preview-image').attr('src', '/' + member.linkAnh);
+                        $('#preview-container').show();
+                        $('#imageHelp').show();
+                        $('#imageRequired').hide();
+                    } else {
+                        $('#preview-container').hide();
+                        $('#imageHelp').hide();
+                        $('#imageRequired').show();
+                    }
+
+                    $('#memberFormTitle').text('Chỉnh sửa thành viên');
+                    $('.image-upload-label span').text('Chọn hình ảnh...');
+                    $('.validation-message').text('');
+                    $('#memberFormModal').css('display', 'block');
+                },
+                error: function () {
+                    alert("Không thể tải thông tin thành viên.");
+                }
+            });
+        }
+
+
+        function viewMember(id) {
+            console.log("View member: " + id);
+
+            $.ajax({
+                url: '/Home/GetTeamMemberDetails/' + id,
+                type: 'GET',
+                success: function(data) {
+                    $('#member-name').text(data.name);
+                    $('#member-image').attr('src', '/' + data.image);
+                    $('#member-position').text(data.position);
+                    $('#member-bio').text(data.bio || 'Chưa có giới thiệu chi tiết.');
+                    $('#member-email').text(data.email || 'Chưa cập nhật');
+
+                    $('#memberViewModal').css('display', 'block');
+                },
+                error: function() {
+                    alert('Đã xảy ra lỗi khi tải thông tin thành viên.');
+                }
+            });
+        }
+
+        function confirmDeleteMember(id, name) {
+            $('#deleteMemberName').text(name);
+
+            $('#btnConfirmDelete').off('click').on('click', function() {
+                deleteMember(id);
+            });
+
+            $('#deleteModal').css('display', 'block');
+        }
+
+        function deleteMember(id) {
+            $.ajax({
+                url: '@Url.Action("DeleteTeamMember", "Admin")/' + id,
+                type: 'POST',
+                data: {
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function(result) {
+                    if (result.success) {
+                        window.location.reload();
+                    } else {
+                        alert(result.message || "Đã xảy ra lỗi khi xóa thành viên.");
+                        $('#deleteModal').css('display', 'none');
+                    }
+                },
+                error: function() {
+                    alert("Đã xảy ra lỗi khi gửi yêu cầu.");
+                    $('#deleteModal').css('display', 'none');
+                }
+            });
+        }
+
+        function closeModal(modalId) {
+            $('#' + modalId).css('display', 'none');
+        }
+
+        function validateMemberForm() {
+            let isValid = true;
+
+            // Kiểm tra họ tên
+            if ($('#hoTen').val().trim() === '') {
+                $('#hoTen').next('.validation-message').text('Vui lòng nhập họ tên.');
+                isValid = false;
+            } else {
+                $('#hoTen').next('.validation-message').text('');
+            }
+
+           
+            // Kiểm tra chức vụ
+            if ($('#chucVu').val().trim() === '') {
+                $('#chucVu').next('.validation-message').text('Vui lòng nhập chức vụ.');
+                isValid = false;
+            } else {
+                $('#chucVu').next('.validation-message').text('');
+            }
+
+            // Kiểm tra hình ảnh
+            if ($('#memberId').val() === "0" && !$('#imageFile')[0].files.length) {
+                $('.image-upload-container').next('.validation-message').text('Vui lòng chọn hình ảnh.');
+                isValid = false;
+            } else {
+                $('.image-upload-container').next('.validation-message').text('');
+            }
+
+            return isValid;
+        }
+    </script>
+}

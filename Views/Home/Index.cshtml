@@ -1,0 +1,186 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<!-- Header Section -->
+<header id="home">
+    <img src="/images/architect.jpg" alt="Thiết kế kiến trúc" class="header-image">
+    <div class="header-content">
+        <h1>
+            <span><b>BR</b></span>
+            <span>Architects</span>
+        </h1>
+    </div>
+</header>
+
+<main>
+    <section id="projects">
+        <h3>Dự án</h3>
+        <div class="projects-grid">
+            @foreach (var project in ViewBag.Projects)
+            {
+                <div class="project-card" data-id="@project.Id">
+                    <img src="/@project.LinkAnh" alt="@project.TenProject">
+                    <div class="overlay">
+                        <h4>@project.TenProject</h4>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section id="about">
+        <h3>Giới thiệu</h3>
+        <p class="desc">
+            BR Architects là một công ty kiến trúc hàng đầu tại Việt Nam, chuyên về thiết kế các công trình dân dụng và công nghiệp.
+            Với đội ngũ kiến trúc sư giàu kinh nghiệm và đam mê, chúng tôi cam kết mang đến những giải pháp kiến trúc sáng tạo,
+            thẩm mỹ cao và phù hợp với nhu cầu của khách hàng. BR Architects đã thực hiện nhiều dự án lớn nhỏ trên toàn quốc,
+            từ các biệt thự sang trọng đến các tòa nhà văn phòng hiện đại.
+        </p>
+
+        <div class="team">
+            @foreach (var member in ViewBag.TeamMembers)
+            {
+                <div class="team-member" data-id="@member.Id">
+                    <img src="/@member.LinkAnh" alt="@member.User.HoTen">
+                    <h4>@member.User.HoTen</h4>
+                    <p class="position">@member.ChucVu</p>
+                    <p>@member.GioiThieu</p>
+                    <p><button>Liên hệ</button></p>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Liên hệ</h2>
+        <p>Hãy liên hệ với chúng tôi để thảo luận về dự án tiếp theo của bạn.</p>
+
+        <form asp-controller="Home" asp-action="Contact" method="POST">
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <input type="text" name="NguoiGui" placeholder="Họ tên" required>
+            </div>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="form-group">
+                    <input type="email" name="Email" placeholder="Email" required>
+                </div>
+            }
+            else
+            {
+                <input type="hidden" name="Email" value="@User.Claims.FirstOrDefault(c => c.Type == "Email")?.Value">
+            }
+            <div class="form-group">
+                <input type="text" name="TieuDe" placeholder="Tiêu đề" required>
+            </div>
+            <div class="form-group">
+                <textarea name="NoiDung" placeholder="Nội dung" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">GỬI THÔNG TIN</button>
+        </form>
+    </section>
+    <section>
+        <img src="/images/map.jpg" width="100%" height="100%" style="object-fit: cover; margin-top: 30px;">
+    </section>
+
+    <!-- Back to Top Button -->
+    <button onclick="topFunction()" id="back-to-top" title="Lên đầu trang">
+        <i class="arrow-up"></i>
+    </button>
+</main>
+
+<!-- Thêm style cho nút Back to Top -->
+<style>
+    #back-to-top {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: #000;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+        #back-to-top:hover {
+            background-color: #333;
+        }
+
+    .arrow-up {
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 5px;
+        transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+        margin-top: 5px;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        // Thêm xử lý cho các thông báo thành công
+        $(document).ready(function() {
+            // Hiển thị thông báo thành công nếu có
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                        // Tạo thông báo
+                        var successDiv = $('<div class="success-message">@TempData["SuccessMessage"]</div>');
+                        $('#contact').prepend(successDiv);
+
+                        // Tự động ẩn sau 5 giây
+                        setTimeout(function() {
+                            successDiv.fadeOut('slow', function() {
+                                $(this).remove();
+                            });
+                        }, 5000);
+            </text>
+        }
+
+            // Xử lý smooth scroll cho các liên kết trong menu
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+
+                var target = this.hash;
+                var $target = $(target);
+
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top - 70
+                }, 900, 'swing', function() {
+                    window.location.hash = target;
+                });
+            });
+
+            // Add console debugging
+            console.log("Project cards count: " + $('.project-card').length);
+            console.log("Team members count: " + $('.team-member').length);
+        });
+
+        // Phát hiện khi người dùng cuộn xuống để hiển thị nút "Lên đầu trang"
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("back-to-top").style.display = "block";
+            } else {
+                document.getElementById("back-to-top").style.display = "none";
+            }
+        }
+
+        // Khi người dùng nhấp vào nút, cuộn lên đầu trang
+        function topFunction() {
+            $('html, body').animate({scrollTop: 0}, 800);
+            return false;
+        }
+    </script>
+}

@@ -1,0 +1,168 @@
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - BR Architects</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/modal.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand">
+                <b>BR</b> Architects
+            </a>
+            <div class="nav-links">
+                <a href="#projects">Dự án</a>
+                <a href="#about">Giới thiệu</a>
+                <a href="#contact">Liên hệ</a>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="user-dropdown">
+                        <a href="#" class="dropbtn">Xin chào, @User.Identity.Name</a>
+                        <div class="dropdown-content">
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a href="@Url.Action("Dashboard", "Admin")">Quản lý</a>
+                                <a href="@Url.Action("ManageProjects", "Admin")">Quản lý dự án</a>
+                                <a href="@Url.Action("ManageTeamMembers", "Admin")">Quản lý thành viên</a>
+                                <a href="@Url.Action("ManageContacts", "Admin")">Quản lý liên hệ</a>
+                                <div class="dropdown-divider"></div>
+                            }
+                            <a href="#" id="logout-btn">Đăng xuất</a>
+                        </div>
+                    </div>
+
+                    <form id="logoutForm" asp-controller="Account" asp-action="Logout" method="post" style="display: none;">
+                        @Html.AntiForgeryToken()
+                    </form>
+                }
+                else
+                {
+                    <a href="#" id="login-btn">Đăng nhập</a>
+                    <a href="#" id="register-btn">Đăng ký</a>
+                }
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <footer>
+        <h3>Powered by <a href="#!">BR Architects</a></h3>
+    </footer>
+
+    <!-- Đăng nhập -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Đăng nhập</h2>
+            <form id="loginForm" asp-controller="Account" asp-action="Login" method="post">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" id="password" name="Password" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="RememberMe"> Ghi nhớ đăng nhập
+                    </label>
+                </div>
+                <div id="login-error" class="error-message"></div>
+                <button type="submit" class="submit-btn">Đăng nhập</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Đăng ký -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Đăng ký</h2>
+            <form id="registerForm" asp-controller="Account" asp-action="Register" method="post">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label for="hoTen">Họ tên</label>
+                    <input type="text" id="hoTen" name="HoTen" required minlength="3">
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" name="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Mật khẩu</label>
+                    <input type="password" id="regPassword" name="Password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Xác nhận mật khẩu</label>
+                    <input type="password" id="confirmPassword" name="ConfirmPassword" required>
+                </div>
+                <div id="register-error" class="error-message"></div>
+                <button type="submit" class="submit-btn">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- OTP -->
+    <div id="otp-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeOtpModal()">×</span>
+            <h2>Nhập mã OTP</h2>
+            <form id="otp-form" onsubmit="submitOtp(event)">
+                <div class="form-group">
+                    <label for="Otp">Mã OTP:</label>
+                    <input type="text" name="Otp" placeholder="Nhập mã OTP" required>
+                    <p id="otp-display" style="display:inline; margin-left:10px; color:#0077cc;"></p>
+                </div>
+                <button type="submit" class="submit-btn">XÁC NHẬN</button>
+                <p id="otp-error" style="color:red; display:none;"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chi tiết dự án -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="project-detail-content">
+                <h2 id="project-title"></h2>
+                <img id="project-image" src="" alt="" style="max-width: 100%;">
+                <p id="project-location"></p>
+                <p id="project-year"></p>
+                <p id="project-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chi tiết thành viên -->
+    <div id="teamModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="team-detail-content">
+                <img id="team-image" src="" alt="" style="max-width: 100px; border-radius: 50%;">
+                <h2 id="team-name"></h2>
+                <h3 id="team-position"></h3>
+                <p id="team-bio"></p>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> <span id="team-email"></span></p>
+                    <p><strong>Điện thoại:</strong> <span id="team-phone"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/java.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

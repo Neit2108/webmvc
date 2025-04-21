@@ -1,0 +1,405 @@
+﻿@model List<BR_Architects.Models.Project>
+@{
+    ViewData["Title"] = "Quản lý dự án";
+    Layout = "_AdminLayout";
+}
+
+<div class="projects-management">
+    <div class="card">
+        <div class="card-header">
+            <h2>Danh sách dự án</h2>
+            <a href="#" onclick="openAddProjectModal(); return false;" class="btn-add">
+                <i class="bi bi-plus-lg"></i> Thêm dự án mới
+            </a>
+        </div>
+
+        <div class="card-body">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            @if (Model.Count == 0)
+            {
+                <div class="no-data">
+                    <i class="bi bi-folder-open"></i>
+                    <p>Chưa có dự án nào.</p>
+                    <button type="button" class="btn" onclick="openAddProjectModal()">Thêm dự án đầu tiên</button>
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">ID</th>
+                                <th style="width: 100px;">Hình ảnh</th>
+                                <th>Tên dự án</th>
+                                <th>Địa điểm</th>
+                                <th>Năm</th>
+                                <th style="width: 150px; text-align: center;">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var project in Model)
+                            {
+                                <tr>
+                                    <td style="text-align: center;">@project.Id</td>
+                                    <td style="text-align: center;">
+                                        <img src="/@project.LinkAnh" alt="@project.TenProject" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
+                                    </td>
+                                    <td>@project.TenProject</td>
+                                    <td>@(project.DiaDiem ?? "Chưa cập nhật")</td>
+                                    <td>@(project.NamHoanThanh?.ToString() ?? "Chưa cập nhật")</td>
+                                    <td style="text-align: center;">
+                                        <div style="display: inline-block;">
+                                            <a href="#" onclick="editProject(@project.Id); return false;" class="button-action edit" style="background-color: #ffc107;">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                            <a href="#" onclick="confirmDeleteProject(@project.Id, '@project.TenProject'); return false;" class="button-action delete" style="background-color: #dc3545;">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                            <a href="#" onclick="viewProject(@project.Id); return false;" class="button-action view" style="background-color: #17a2b8;">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Xem dự án -->
+<div id="projectViewModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="project-detail">
+            <h2 id="project-title"></h2>
+            <div class="project-image-container">
+                <img id="project-image" src="" alt="">
+            </div>
+            <div class="project-info">
+                <p><strong>Địa điểm:</strong> <span id="project-location"></span></p>
+                <p><strong>Năm hoàn thành:</strong> <span id="project-year"></span></p>
+            </div>
+            <div class="project-description">
+                <h3>Mô tả chi tiết</h3>
+                <p id="project-description"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sửa/thêm -->
+<div id="projectFormModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="projectFormTitle">Thêm dự án mới</h2>
+        <form id="projectForm" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <input type="hidden" id="projectId" name="Id" value="0">
+            <input type="hidden" id="currentImage" name="LinkAnh" value="">
+
+            <div class="form-group">
+                <label for="tenProject">Tên dự án <span class="required">*</span></label>
+                <input type="text" id="tenProject" name="TenProject" class="form-control" required>
+                <span class="validation-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="imageFile">Hình ảnh <span class="required" id="imageRequired">*</span></label>
+                <div class="image-upload-container">
+                    <input type="file" name="imageFile" id="imageFile" class="image-upload" accept="image/*">
+                    <label for="imageFile" class="image-upload-label">
+                        <i class="bi bi-cloud-upload"></i>
+                        <span>Chọn hình ảnh...</span>
+                    </label>
+                    <div id="preview-container" class="preview-container" style="display: none;">
+                        <img id="preview-image" src="#" alt="Preview">
+                        <button type="button" id="remove-image" class="remove-preview">
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </div>
+                    <small class="form-text text-muted" id="imageHelp" style="display: none;">Để trống nếu bạn không muốn thay đổi hình ảnh.</small>
+                </div>
+                <div class="validation-message"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="diaDiem">Địa điểm</label>
+                <input type="text" id="diaDiem" name="DiaDiem" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="namHoanThanh">Năm hoàn thành</label>
+                <input type="number" id="namHoanThanh" name="NamHoanThanh" class="form-control" min="1900" max="2100">
+            </div>
+
+            <div class="form-group">
+                <label for="moTaChiTiet">Mô tả chi tiết</label>
+                <textarea id="moTaChiTiet" name="MoTaChiTiet" class="form-control" rows="5"></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" onclick="closeModal('projectFormModal')">Hủy bỏ</button>
+                <button type="submit" class="btn-submit">Lưu dự án</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Xóa -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Xác nhận xóa</h2>
+        <p>Bạn có chắc chắn muốn xóa dự án "<span id="deleteProjectName"></span>"?</p>
+        <div class="form-actions">
+            <button type="button" class="btn-cancel" onclick="closeModal('deleteModal')">Hủy bỏ</button>
+            <button type="button" class="btn-delete" id="btnConfirmDelete">Xác nhận xóa</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .button-action {
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        color: white;
+        text-align: center;
+        line-height: 36px;
+        margin: 0 3px;
+        text-decoration: none;
+    }
+
+        .button-action:hover {
+            opacity: 0.9;
+            color: white;
+        }
+
+        .button-action i {
+            font-size: 16px;
+        }
+
+    .data-table th,
+    .data-table td {
+        vertical-align: middle;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            console.log("Project management page loaded");
+
+            $('#imageFile').change(function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#preview-image').attr('src', e.target.result);
+                        $('#preview-container').show();
+                        $('.image-upload-label span').text(file.name);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            $('#remove-image').click(function() {
+                $('#imageFile').val('');
+                $('#preview-container').hide();
+                $('.image-upload-label span').text('Chọn hình ảnh...');
+            });
+
+            $('#projectForm').submit(function(e) {
+                e.preventDefault();
+
+                // Validate form
+                if (!validateProjectForm()) {
+                    return false;
+                }
+
+                var formData = new FormData(this);
+                    for (var pair of formData.entries()) {
+            if (pair[0] === 'imageFile') {
+                console.log('imageFile details:', formData.get('imageFile'));
+                console.log('File name:', formData.get('imageFile').name);
+                console.log('File size:', formData.get('imageFile').size);
+                console.log('File type:', formData.get('imageFile').type);
+            } else {
+                console.log(pair[0] + ': ' + pair[1]);
+            }
+        }
+
+                var url = ($("#projectId").val() === "0") ?
+                    '@Url.Action("CreateProject", "Admin")' :
+                    '@Url.Action("EditProject", "Admin")';
+
+                $('.btn-submit').prop('disabled', true).text('Đang xử lý...');
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(result) {
+                        if (result.success) {
+                            window.location.reload();
+                        } else {
+                            alert(result.message || "Đã xảy ra lỗi khi lưu dự án.");
+                            $('.btn-submit').prop('disabled', false).text('Lưu dự án');
+                        }
+                    },
+                    error: function() {
+                        alert("Đã xảy ra lỗi khi gửi yêu cầu.");
+                        $('.btn-submit').prop('disabled', false).text('Lưu dự án');
+                    }
+                });
+            });
+        });
+
+        // mở form thêm
+        function openAddProjectModal() {
+            console.log("Opening add project modal");
+
+            $('#projectForm')[0].reset();
+            $('#projectId').val(0);
+            $('#currentImage').val('');
+            $('#projectFormTitle').text('Thêm dự án mới');
+            $('#imageRequired').show();
+            $('#imageHelp').hide();
+            $('#preview-container').hide();
+            $('.image-upload-label span').text('Chọn hình ảnh...');
+
+            $('.validation-message').text('');
+
+            $('#projectFormModal').css('display', 'block');
+        }
+
+        // mở form sửa
+        function editProject(id) {
+            console.log("Edit project: " + id);
+
+            $.ajax({
+                url: '@Url.Action("GetProjectById", "Admin")/' + id,
+                type: 'GET',
+                success: function(project) {
+                    $('#projectId').val(project.id);
+                    $('#tenProject').val(project.tenProject);
+                    $('#currentImage').val(project.linkAnh);
+                    $('#diaDiem').val(project.diaDiem);
+                    $('#namHoanThanh').val(project.namHoanThanh);
+                    $('#moTaChiTiet').val(project.moTaChiTiet);
+
+                    $('#projectFormTitle').text('Chỉnh sửa dự án');
+
+                    if (project.linkAnh) {
+                        $('#imageRequired').hide();
+                        $('#imageHelp').show();
+                    }
+
+                    $('.validation-message').text('');
+
+                    $('#projectFormModal').css('display', 'block');
+                },
+                error: function() {
+                    alert("Đã xảy ra lỗi khi tải thông tin dự án.");
+                }
+            });
+        }
+
+        function viewProject(id) {
+            console.log("View project: " + id);
+
+            $.ajax({
+                url: '/Home/GetProjectDetails/' + id,
+                type: 'GET',
+                success: function(data) {
+                    $('#project-title').text(data.tenProject);
+                    $('#project-image').attr('src', '/' + data.linkAnh);
+                    $('#project-location').text(data.diaDiem || 'Chưa cập nhật');
+                    $('#project-year').text(data.namHoanThanh || 'Chưa cập nhật');
+                    $('#project-description').text(data.moTaChiTiet || 'Chưa có mô tả chi tiết.');
+                    $('#projectViewModal').css('display', 'block');
+                },
+                error: function() {
+                    alert('Đã xảy ra lỗi khi tải thông tin dự án.');
+                }
+            });
+        }
+
+        // xóa
+        function confirmDeleteProject(id, name) {
+            $('#deleteProjectName').text(name);
+
+            $('#btnConfirmDelete').off('click').on('click', function() {
+                deleteProject(id);
+            });
+
+            $('#deleteModal').css('display', 'block');
+        }
+
+        function deleteProject(id) {
+            $.ajax({
+                url: '@Url.Action("DeleteProject", "Admin")/' + id,
+                type: 'POST',
+                data: {
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function(result) {
+                    if (result.success) {
+                        window.location.reload();
+                    } else {
+                        alert(result.message || "Đã xảy ra lỗi khi xóa dự án.");
+                        $('#deleteModal').css('display', 'none');
+                    }
+                },
+                error: function() {
+                    alert("Đã xảy ra lỗi khi gửi yêu cầu.");
+                    $('#deleteModal').css('display', 'none');
+                }
+            });
+        }
+
+        function closeModal(modalId) {
+            $('#' + modalId).css('display', 'none');
+        }
+        function validateProjectForm() {
+            let isValid = true;
+
+            if ($('#tenProject').val().trim() === '') {
+                $('#tenProject').next('.validation-message').text('Vui lòng nhập tên dự án.');
+                isValid = false;
+            } else {
+                $('#tenProject').next('.validation-message').text('');
+            }
+
+            if ($('#projectId').val() === "0" && !$('#imageFile')[0].files.length) {
+                $('.image-upload-container').next('.validation-message').text('Vui lòng chọn hình ảnh.');
+                isValid = false;
+            } else {
+                $('.image-upload-container').next('.validation-message').text('');
+            }
+                const namHoanThanh = $('#namHoanThanh').val();
+            if (namHoanThanh && (isNaN(namHoanThanh) || namHoanThanh < 1900 || namHoanThanh > 2100)) {
+                $('#namHoanThanh').next('.validation-message').text('Năm hoàn thành phải từ 1900 đến 2100.');
+                isValid = false;
+            } else {
+                $('#namHoanThanh').next('.validation-message').text('');
+            }
+
+            return isValid;
+        }
+    </script>
+}

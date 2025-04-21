@@ -1,0 +1,381 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\Br_Architects.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Br_Architects.wk613ifvh0.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\css\\modal.css",
+      "PackagePath": "staticwebassets\\css\\modal.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\284b4054-83ee-49e4-a71c-36b09e10d865.jpg",
+      "PackagePath": "staticwebassets\\images\\284b4054-83ee-49e4-a71c-36b09e10d865.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\5da69509-4f80-4956-acad-b31434535686.png",
+      "PackagePath": "staticwebassets\\images\\5da69509-4f80-4956-acad-b31434535686.png"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\96a46ff8-b646-4ac2-b43e-d995eca95cd9.jpg",
+      "PackagePath": "staticwebassets\\images\\96a46ff8-b646-4ac2-b43e-d995eca95cd9.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\architect.jpg",
+      "PackagePath": "staticwebassets\\images\\architect.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\architect1.jpg",
+      "PackagePath": "staticwebassets\\images\\architect1.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\architect2.jpg",
+      "PackagePath": "staticwebassets\\images\\architect2.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\architect3.jpg",
+      "PackagePath": "staticwebassets\\images\\architect3.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\avatar1.jpg",
+      "PackagePath": "staticwebassets\\images\\avatar1.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\avatar2.jpg",
+      "PackagePath": "staticwebassets\\images\\avatar2.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\avatar3.jpg",
+      "PackagePath": "staticwebassets\\images\\avatar3.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\avatar4.jpg",
+      "PackagePath": "staticwebassets\\images\\avatar4.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\dde97516-7b6a-4afd-acf5-70b6da4f0b7f.jpg",
+      "PackagePath": "staticwebassets\\images\\dde97516-7b6a-4afd-acf5-70b6da4f0b7f.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\eddbd01a-6af4-4540-9b90-fa7222956550.jpg",
+      "PackagePath": "staticwebassets\\images\\eddbd01a-6af4-4540-9b90-fa7222956550.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\house1.jpg",
+      "PackagePath": "staticwebassets\\images\\house1.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\house2.jpg",
+      "PackagePath": "staticwebassets\\images\\house2.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\house3.jpg",
+      "PackagePath": "staticwebassets\\images\\house3.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\house4.jpg",
+      "PackagePath": "staticwebassets\\images\\house4.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\house5.jpg",
+      "PackagePath": "staticwebassets\\images\\house5.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\house6.jpg",
+      "PackagePath": "staticwebassets\\images\\house6.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\house7.jpg",
+      "PackagePath": "staticwebassets\\images\\house7.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\house8.jpg",
+      "PackagePath": "staticwebassets\\images\\house8.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\images\\map.jpg",
+      "PackagePath": "staticwebassets\\images\\map.jpg"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\js\\admin.js",
+      "PackagePath": "staticwebassets\\js\\admin.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\js\\java.js",
+      "PackagePath": "staticwebassets\\js\\java.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
+    },
+    {
+      "Id": "D:\\MyProjects\\WebMVC\\MVCWeb\\Br_Architects\\Br_Architects\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.Br_Architects.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.Br_Architects.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.Br_Architects.props",
+      "PackagePath": "build\\Br_Architects.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.Br_Architects.props",
+      "PackagePath": "buildMultiTargeting\\Br_Architects.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.Br_Architects.props",
+      "PackagePath": "buildTransitive\\Br_Architects.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
